@@ -1,3 +1,5 @@
 source 'https://rubygems.org'
+
 gem 'sinatra'
-gem 'rackup'
+gem 'rackup'  
+gem 'webrick'  # servidor
