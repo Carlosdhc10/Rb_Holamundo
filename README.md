@@ -1,24 +1,44 @@
-# :computer: Hello World Project with Sinatra and Docker :computer:
+## :computer: Hello World Project with Sinatra and Docker :computer:
 
-This project creates a basic web application in **Ruby** using the **Sinatra** framework. The application displays a hello world. It is also **dockerized** and **deployed to Render**.
+This project creates a basic web application in Ruby using the Sinatra framework. The application displays "Hello World." It is also dockerized and deployed to Heroku.
 
 ## :newspaper: Description
 
-The project uses Sinatra to create a simple web application that displays a "Hello Word...!". The application has been dockerized to facilitate its deployment to services such as **Render**.
+The project uses Sinatra to create a simple web application that displays "Hello World." The application has been dockerized to facilitate its deployment to services such as Heroku.
 
 ## :circus_tent: Project Structure
 
 The project structure is as follows:
 
-Holamundo.rb 
-Dockerfile 
-Gemfile 
+Rb_Holamundo/
+
+Dockerfile
+
+Gemfile
+
 Gemfile.lock
+
+Holamundo.rb
+
+Procfile
+
+## 🔐Key Files:
+
+Dockerfile: Defines the container configuration for the app.
+
+Gemfile: Specifies the Ruby dependencies.
+
+Gemfile.lock: Locks the exact versions of dependencies.
+
+Holamundo.rb: The main Sinatra application file.
+
+Procfile: Specifies the web process for Heroku deployment.
 
 ## :book: Requirements
 
-1. **Docker**: Make sure you have Docker installed so you can build and run the application in a container.
-2. **Render**: If you want to deploy the application on Render, you will need an account on [Render](https://render.com).
+1.-Docker: Install Docker to build and run the application in a container.
+
+2.-Heroku CLI: Install the Heroku CLI to deploy the application to Heroku.
 
 ## 🔨 Installation
 
@@ -32,12 +52,13 @@ git clone https://github.com/Carlosdhc10/Rb_Holamundo.git
 ### 2. Navigate to the project directory:
 
 ```bash
-cd Rb_holamundo
+cd Rb_Holamundo
 ```
 ### 3.Install the necessary dependencies:
 
 ```bash
 gem install bundler
+bundle install
 ```
 ## :airplane: Running the Application
 
@@ -59,35 +80,92 @@ Once the Docker image is built, run the container with the following command
 docker run --rm carlosdhc333/Rb_holamundo:v1
 ```
 ## 🎈 Pushing to Docker Hub (Optional)
+
 If you want to share the Docker container, you can push it to Docker Hub:
-1:Log in to Docker Hub:
+
+### 1:Log in to Docker Hub:
+
 ```bash
 docker login
 ```
-2️:Tag the image
+### 2️:Tag the image
+
 ```bash
 docker tag carlosdhc333/Rb_holamundo:v1 your_username/hola-mundo-ruby
 ```
-3️:Push the image
+
+### 3️:Push the image
+
 ```bash
 docker push your_username/hola-mundo-ruby
 ```
-## :chart_with_upwards_trend: Deployment in Render (Optional)
+## :rocket: Deployment in Heroku
 
-To deploy this application in Render, follow these steps:
+### 1. Login to Heroku
 
-1.-Upload the repository to GitHub.
+Log in using the Heroku CLI:
 
-2.-In Render, select "New" > "Web Service" and connect the repository.
+```bash
+heroku login
+```
 
-3.-Set the execution command to ruby ​​Helloworld.rb in the Render settings.
+### 2. Create a Heroku App
+   
+Create a new Heroku application:
 
-Render will take care of building the image and running the script, displaying the message in the service log output.
+```bash
+heroku create
+```
+
+### 3. Add a Procfile
+   
+Ensure your project includes a Procfile with the following content:
+
+```bash
+web: ruby Holamundo.rb -o 0.0.0.0
+```
+
+This ensures Heroku knows how to start your application.
+
+### 4. Add a Ruby Buildpack
+   
+Set the buildpack for Ruby
+
+```bash
+heroku buildpacks:set heroku/ruby
+```
+
+### 5. Deploy to Heroku
+
+Deploy the application using Git:
+
+```bash
+git add .
+git commit -m "Deploying Hello World to Heroku"
+git push heroku main
+```
+### 6. Open the Application
+   
+After deployment, open the application in your browser:
+
+```bash
+heroku open
+```
+
+### 7. View Logs
+   
+If there are issues, you can check the logs:
+
+```bash
+heroku logs --tail
+```
 
 ## :bowling: Contributing
 
-If you want to improve the project, feel free to fork and send a pull request!
+Feel free to fork this repository and submit pull requests to contribute improvements.
 
 ## :copyright: License :copyright:
 
-This README provides all the information a user needs to run the "Hello World" project in their local environment or deploy it to Render.
+This README includes all instructions needed to set up and deploy the Hello World project locally or on Heroku.
+
+
